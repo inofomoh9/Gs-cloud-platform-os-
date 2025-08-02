@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GS Cloud YouTube</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-black text-white">
+  <div class="max-w-5xl mx-auto p-6">
+    <h1 class="text-3xl font-bold text-green-400 mb-4">🎥 GS Cloud YouTube</h1>
+    <a href="upload.html" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Upload Video</a>
+    <div id="videos" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6"></div>
+  </div>
+
+  <script>
+    fetch("videos.json")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("videos");
+        container.innerHTML = data.map(v => `
+          <div class="bg-gray-800 p-4 rounded">
+            <video controls class="w-full rounded"><source src="\${v.url}" type="video/mp4"></video>
+            <h2 class="text-lg font-bold mt-2">\${v.title}</h2>
+            <p class="text-sm text-gray-400">\${v.type} • \${v.size_mb}MB</p>
+            <p class="text-yellow-400 mt-2">👁️ Views: \${Math.floor(Math.random()*1000)} | 💬 Comments: \${(v.comments||[]).length}</p>
+            <a href="https://paystack.com/pay/gscloudtip" class="text-green-400 underline">💰 Tip Creator</a>
+          </div>
+        `).join('');
+      });
+  </script>
+</body>
+</html>

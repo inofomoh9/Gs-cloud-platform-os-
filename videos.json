@@ -1,0 +1,13 @@
+[
+  {
+    "title": "Sample Movie Trailer",
+    "url": "sample.mp4",
+    "size_mb": 200,
+    "type": "Long Video",
+    "uploader": "creator@example.com",
+    "comments": [
+      {"user": "fan1", "text": "Amazing!"},
+      {"user": "fan2", "text": "Can't wait for more!"}
+    ]
+  }
+]
